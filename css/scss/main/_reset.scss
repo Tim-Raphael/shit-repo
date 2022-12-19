@@ -1,0 +1,10 @@
+@use 'variables' as v;
+* {
+  margin: 0;
+  background-color: v.$dark;
+  color: v.$light;
+  body {
+    min-width: 100%;
+    min-height: 100%;
+  }
+}

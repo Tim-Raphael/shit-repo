@@ -1,16 +1,15 @@
 <?php
 // Head ///////////////////////
 //////////////////////////////
-
-// check path if the styles wont load
-function createHead($title = "Document", $description = "Description...")
+function createHead($title = "Document", $description = "Description...", $path = '')
 {
   $html = <<<"EOT"
     <head>
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="/css/styles.css">
+      <link rel="shortcut icon" href="$path/images/favicon.ico" type="image/x-icon">
+      <link rel="stylesheet" href="$path/css/styles.css">
 
       <title>$title</title>
       <meta name="description" content="$description">

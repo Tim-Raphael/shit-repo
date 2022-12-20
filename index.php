@@ -3,15 +3,13 @@
 
 <?php
 require __DIR__ . '/templates/main.php';
-createHead('Document', 'Document Description...');
+createHead('Document', 'Document Description...', '');
 ?>
 
 <body>
 
   <header>
-
     <?php mainNav(); ?>
-
   </header>
 
   <main>

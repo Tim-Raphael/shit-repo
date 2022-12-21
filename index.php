@@ -1,25 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <?php
-require __DIR__ . '/templates/main.php';
-createHead('Document', 'Document Description...', '');
+require $_SERVER['DOCUMENT_ROOT'] . '/templates/main.php';
+createHead('Document Test', 'Document Description...', '');
 ?>
 
-<body>
+<header>
+  <?php mainNav(); ?>
+</header>
 
-  <header>
-    <?php mainNav(); ?>
-  </header>
+<main>
 
-  <main>
+</main>
 
-  </main>
+<footer>
 
-  <footer>
+</footer>
 
-  </footer>
-
-</body>
-
-</html>
+<?php closeDocument('') ?>

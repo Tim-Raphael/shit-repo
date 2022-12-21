@@ -4,6 +4,8 @@
 function createHead($title = "Document", $description = "Description...", $path = '')
 {
   $html = <<<"EOT"
+    <!DOCTYPE html>
+    <html lang="en">
     <head>
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,6 +16,16 @@ function createHead($title = "Document", $description = "Description...", $path 
       <title>$title</title>
       <meta name="description" content="$description">
     </head>
+    <body>
+EOT;
+  echo $html;
+}
+function closeDocument($path)
+{
+  $html = <<<"EOT"
+    <script src="$path/js/main.js"></script>
+    </body>
+    </html>
 EOT;
   echo $html;
 }

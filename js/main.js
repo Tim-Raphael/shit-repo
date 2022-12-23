@@ -1,6 +1,9 @@
 // SET SOME BODY CLASSES //////
 ////////////////////////////// 
-const documentName = document.location.pathname.split('/').pop();
+let documentName = document.location.pathname.split('/').pop();
+if (documentName === ''){
+  documentName = 'index.php';
+}
 document.body.classList.add(documentName);
 
 window.addEventListener('wheel', function() {

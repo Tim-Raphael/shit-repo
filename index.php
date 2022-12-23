@@ -1,18 +1,18 @@
 <?php
-require $_SERVER['DOCUMENT_ROOT'] . '/templates/main.php';
-createHead('Document Test', 'Document Description...', '');
-?>
+$title = "Document Title";
+$description = "Page Description...";
+include("./templates/main.php"); ?>
 
 <header>
-  <?php mainNav(); ?>
-</header>
 
+</header>
 <main>
 
 </main>
-
 <footer>
 
 </footer>
+<script src="/js/main.js"></script>
+</body>
 
-<?php closeDocument('') ?>
+</html>

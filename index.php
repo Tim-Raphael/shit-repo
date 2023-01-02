@@ -1,7 +1,8 @@
 <?php
 $title = "Document Title";
 $description = "Page Description...";
-include("./templates/main.php"); ?>
+include("./templates/openDocument.php");
+?>
 
 <header>
 
@@ -12,7 +13,10 @@ include("./templates/main.php"); ?>
 <footer>
 
 </footer>
-<script src="/js/main.js"></script>
-</body>
 
-</html>
+<?php
+$scripts = array(
+  "./js/main.js"
+);
+include("./templates/closeDocument.php");
+?>

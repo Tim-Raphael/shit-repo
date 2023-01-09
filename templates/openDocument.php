@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="/css/styles.css">
-  <title><?= $title ?></title>
-  <meta name="description" content="<?= $description ?>">
+  <title><?php print $title ?></title>
+  <meta name="description" content="<?php print $description ?>">
 </head>
 
 <body>

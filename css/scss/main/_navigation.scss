@@ -1,17 +1,32 @@
 @use 'variables' as v;
 nav.mainNav {
   position: fixed;
-  top: 0;
+  bottom: 0;
   left: 0;
   z-index: 100;
   width: 100%;
-  backgroundcolor: v.$dark;
   max-width: unset;
   height: fit-content;
   padding: v.$baseGap 0;
+  background-color: rgba(v.$dark, .75);
+  backdrop-filter: blur(6px);
+  transition: .1s ease-in-out;
+  box-shadow: 0 0px 2px rgba(0,0,0,0.25),
+              0 0px 4px rgba(0,0,0,0.25),
+              0 0px 8px rgba(0,0,0,0.25),
+              0 0px 16px rgba(0,0,0,0.25);
+  @media (min-width: v.$break) {
+    bottom: unset;
+    top: 0;
+    body.atTheTop &{
+      background-color: transparent;
+      backdrop-filter: unset;
+      box-shadow: unset;
+    }
+  }
 
-  // MOBILE /////////////////////
-  //////////////////////////////
+  // mobile 
+  //===//
   .mobileNav {
     label[for="navToggle"] {
       display: block;
@@ -19,6 +34,7 @@ nav.mainNav {
       width: 36px;
       height: 24px;
       cursor: pointer;
+      margin-left: auto;
 
       &::before, &::after {
         content: '';
@@ -47,17 +63,25 @@ nav.mainNav {
       }
 
     }
-    ul {
+    div {
       opacity: 0;
-      list-style: none;
+      right: -50%;
+      bottom: 100%;
       position: fixed;
-      left: -100%;
-      padding: v.$baseGap;
-      min-height: 100%;
-      transition: left v.$animation;
-      li {
-        padding: v.$baseGap 0;
+      transition: right v.$animation;
+      z-index: -1;
+      background-color: rgba(v.$dark, .75);
+      backdrop-filter: blur(6px);
+      border-top-left-radius: 8px;
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+          padding: v.$baseGap;
+        }
       }
+
     }
   }
 
@@ -72,19 +96,19 @@ nav.mainNav {
           transform: translateY(10px);
         }
       }
-      ul {
-        opacity: 1;
-        display: block;
-        left: 0%;
-      }
+    div {
+      opacity: 1;
+      right: 0%;
+    }
     }
   }
   .desktopNav {
     display: none;
   }
+  //===//
 
-  // DESKTOP ////////////////////
-  //////////////////////////////
+  // desktop 
+  //===//
   @media (min-width: v.$break) {
     .desktopNav {
       display: block;
@@ -92,13 +116,13 @@ nav.mainNav {
         display: flex;
         list-style: none;
         padding: 0;
+
         li {
           padding: 0 v.$baseGap;
-          
-          &:first-of-type {
-            padding-left: 0;
-          }
+          padding-left: 0;
+
           &:last-of-type {
+            margin-left: auto;
             padding-right: 0;
           }
         }
@@ -108,4 +132,5 @@ nav.mainNav {
       display: none;
     }
   }
+  //===//
 }

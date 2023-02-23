@@ -1,28 +1,38 @@
-// COLORS /////////////////////
-//////////////////////////////
-$primary: yellow;
-$dark: black;
-$light: white;
+// colors
+//===//
+$primary: #F2BE22;
+$primary: #d6a614;
+$dark: #2D2D2D;
+$darker: #262626;
+$light: #F2F2F2;
+$alert: #ff5816;
+//===//
 
-// SPACING ////////////////////
-//////////////////////////////
+// spacing
+//===//
 $baseGap: 24px;
 $largeGap: 32px;
+//===//
 
-// FONTS //////////////////////
-//////////////////////////////
+// fonts
+//===//
 $headlineFont: '';
 $textFont: '';
+//===//
 
-// BREAKPOINTS ////////////////
-//////////////////////////////
+// breakpoints
+//===//
 $break: 1024px;
 $full: 1440px;
+//===//
 
-// ANIMATION //////////////////
-//////////////////////////////
+// animations
+//===//
 $animation: .1s ease-in-out;
 $slowAnimation: .3s ease-in-out;
+//===//
 
-// MISC ///////////////////////
-//////////////////////////////
+// misc
+//===//
+
+//===//

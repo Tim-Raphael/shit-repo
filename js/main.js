@@ -71,16 +71,3 @@ ELs_inViewport.forEach(el => {
   Obs.observe(el, obsOptions);
 });
 //===//
-
-// animate favicon
-//===//
-const favicon = document.querySelector('link[rel~="icon"]');
-
-setInterval(() => {
-  if (favicon.href.includes('favicon.ico')) {
-    favicon.href = '/images/favicon2.ico'
-  } else {
-    favicon.href = '/images/favicon.ico'
-  }
-}, 1000);
-//===//

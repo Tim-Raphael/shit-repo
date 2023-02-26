@@ -1,3 +1,27 @@
+// check if feature is supported
+//===//
+const isFormatSupported = (format, dataUri) =>
+new Promise((resolve, reject) => {
+  const image = new Image();
+
+  image.src = `data:image/${format};base64,${dataUri}`;
+
+  image.onload = () => {
+    resolve(true);
+  };
+
+  image.onerror = () => {
+    reject(format.toUpperCase() + " format not supported. Images loaded as a .jpg 😞.");
+  };
+});
+
+// avif file format
+const supportsAvif = isFormatSupported(
+  "avif",
+  "AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgANogQEAwgMg8f8D///8WfhwB8+ErK42A="
+);
+//===//
+
 // set some body classes
 //===//
 const documentName = document.location.pathname;
@@ -32,14 +56,14 @@ window.addEventListener('scroll', () => {
   if (checkScrollDirectionIsUp()) {
     document.body.classList.remove('scrollingDown');
     document.body.classList.add('scrollingUp');
-    
+
   } else {
     document.body.classList.remove('scrollingUp');
     document.body.classList.add('scrollingDown');
   }
   atTheTop();
 
-  // Paralax 
+  // Paralax
   const scroll = window.scrollY
   const bgParalax = document.body.querySelectorAll('.bgParalax');
 
@@ -56,18 +80,28 @@ window.addEventListener('scroll', () => {
 //===//
 const inViewport = (entries, observer) => {
   entries.forEach(entry => {
-    entry.target.classList.toggle("is-inViewport", entry.isIntersecting);
-    entry.target.classList.add('toggledViewport', entry.isIntersecting)
+    entry.target.classList.toggle("isInViewport", entry.isIntersecting);
+    if (entry.target.classList.contains('isInViewport')) {
+      entry.target.classList.add('toggledViewport', entry.isIntersecting);
+    }
+    // lazyload images
+    if (entry.target.hasAttribute('data-src')) {
+      if (supportsAvif) {
+        entry.target.src = entry.target.getAttribute('data-src').replace('.jpg', '.avif');
+      } else {
+        entry.target.src = entry.target.getAttribute('data-src');
+      }
+    }
   });
 };
 
-const Obs = new IntersectionObserver(inViewport);
+const observer = new IntersectionObserver(inViewport);
 const obsOptions = {
-  threshold: .1
+  threshold: 0,
 };
 
-const ELs_inViewport = document.querySelectorAll('[data-inviewport]');
-ELs_inViewport.forEach(el => {
-  Obs.observe(el, obsOptions);
+const elsInViewport = document.querySelectorAll('[data-inviewport]');
+elsInViewport.forEach(el => {
+  observer.observe(el, obsOptions);
 });
 //===//

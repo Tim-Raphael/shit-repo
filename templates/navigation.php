@@ -6,16 +6,12 @@
       <div>
         <ul>
           <li><a href="/">Home</a></li>
-
-          <li><a href="login.php?login">Login</a></li>
         </ul>
       </div>
     </div>
     <div class="desktopNav col">
       <ul>
         <li><a href="/">Home</a></li>
-
-        <li class="login"><a href="login.php?login">Login</a></li>
       </ul>
     </div>
   </div>

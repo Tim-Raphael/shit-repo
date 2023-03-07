@@ -85,7 +85,7 @@ const inViewport = (entries, observer) => {
       entry.target.classList.add('toggledViewport', entry.isIntersecting);
     }
     // lazyload images
-    if (entry.target.hasAttribute('data-src')) {
+    if (entry.target.hasAttribute('data-src') && entry.isIntersecting) {
       if (supportsAvif) {
         entry.target.src = entry.target.getAttribute('data-src').replace('.jpg', '.avif');
       } else {
